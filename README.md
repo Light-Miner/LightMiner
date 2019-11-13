@@ -17,7 +17,7 @@ If you want to know more about Coimimp [Click here](https://coinimp.com).
 * ___Fifth Update___      Finish the css of the index.html(Not responsive)  
 * ___Sixth Update___      Finish the css of the FAQ.html(Not responsive)  
 * ___Seventh Update___    Finish the css of the miner.html(Not responsive)  
-* ___Eighth Update___     Finish the UI of the miner in the miner.html(Still using the js of Coinimp)  
+* ___Eighth Update___     Finish the UI of the miner in the miner.html(Still using the API of Coinimp)  
 * ___Ninth Update___      Finish the UI of the miner's reward(Still using the API of Coinimp)  
 * ___Tenth Update___      Finish the server side of the miner's pool  
 * ___Eleventh Update___   Finish the user side of the miner's pool  
