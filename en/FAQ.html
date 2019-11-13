@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <title>Light Miner: Donating while relaxing</title>
+        <script src="/lib/js/pace/pace.min.js"></script>
+        <link href="/lib/js/pace/themes/blue/pace-theme-flash.css" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/lib/css/caramel.min.css" rel="stylesheet">
+        <style>
+            a{
+                color: #58D68D
+            }
+            a:visited{
+                color: #58D68D
+            }
+            a:hover{
+                color: #58D68D
+            }
+            a:active{
+                color: #58D68D
+            }
+        </style>
+    </head>
+    <body>
+        <script src="/lib/js/jquery.min.js"></script>
+        <script src="/lib/js/caramel.min.js"></script>
+        <!--以上是引入的所有js-->
+        <div id='bubble'>
+            <link href="/lib/css/bubble-nightmode.css" rel="stylesheet" type="text/css" />
+            <ul class="bg-bubbles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>        
+        </div>
+        <!--以上是气泡背景-->
+        <nav class="nav bar thick">
+                <ul>
+                    <li class="collapse"><a href="#" class="menu"><i class="fa fa-bars"></i></a></li>
+                    <li class="brand">
+                        <a href="/en/">
+                            <img alt="" src="/lib/img/logo/logo-1.webp" height="35px" width="auto"/>
+                        </a>
+                    </li>
+                    <ul class="right" >
+                        <li class="dropdown"><a href="#" class="dropdownitem" ><img alt="" src="/lib/img/icon/808B96/web.webp" height="20px" width="auto" style="vertical-align:middle"/>Language</a>
+                            <ul>
+                                <li><a href="/en/FAQ" style="color: #525252">English</a></li>
+                                <li><a href="/zh/FAQ" style="color: #525252">Chinese</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/en/" style="color: #525252">HOME</a></li>
+                        <li><a href="/en/FAQ" style="color: #525252">FAQ</a></li>
+                        <li><a href="/en/miner" style="color: #525252">⛏Mine NOW</a></li>
+                    </ul>
+                </ul>
+        </nav>
+        <div class="panel info" style="width: 75%;margin-left:13%;margin-top: 3%;clear:both">
+            <div class="panel-head" style="font-size: 20px">Why do we do this?</div>
+            <div class="panel-body" style="background-color: rgba(0,0,0,0);text-align: center">
+                <h5 style="color: #F7DC6F">
+                    There are so many people in the world who faces hunger<br>
+                    We all have electronic devices and there are Wi-Fi everywhere. We use your device's free time to mine the Cryptographic Currency WebChain (WEB).<br>
+                    Money from mining Cryptographic Currency will be sent to who need them.
+                </h5>
+            </div>
+        </div>
+        <div class="panel success" style="width:75%;margin-left:13%;margin-top: 3%;clear:both">
+            <div class="panel-head" style="font-size: 20px">How to help us?</div>
+            <div class="panel-body" style="background-color: rgba(0,0,0,0);text-align:center">
+                <h5 style="color: #F7DC6F">
+                    Help us mine Cryptographic Currency, Click<a href="/en/miner" style="color:coral"> HERE </a>to start mining
+                </h5>
+            </div>
+        </div>
+        <div class="panel error" style="width:75%;margin-left:13%;margin-top: 3%;clear:both">
+            <div class="panel-head" style="font-size: 20px">Find a BUG?</div>
+            <div class="panel-body" style="background-color: rgba(0,0,0,0);text-align:center">
+                <h5 style="color: #F7DC6F">
+                    Contact us? Send an email <a href="mailto:support@lightminer.xyz">support@lightminer.xyz</a> to us.
+                </h5>
+            </div>
+        </div>
+        <div class="panel warn" style="width:75%;margin-left:13%;margin-top: 3%;clear:both">
+                <div class="panel-head" style="font-size: 20px">Want to see the source code?</div>
+                <div class="panel-body" style="background-color: rgba(0,0,0,0);text-align:center">
+                    <h5 style="color: #F7DC6F">
+                            Our website is hosted on GitHub, you can see the source code on Github<br>
+                            <a href="https://github.com/ALPHA2004/LightMiner">https://github.com/ALPHA2004/LightMiner</a>
+                    </h5>
+                </div>
+        </div>
+        <link rel="stylesheet" type="text/css" href="/lib/css/cookieconsent.min.css" />
+        <script src="/lib/js/js.cookie.min.js"></script>
+        <script src="/lib/js/cookieconsent.min.js"></script>
+        <script>
+            var cookie_allow
+            cookie_allow = Cookies.get('cookies-allow');
+            if(cookie_allow===true){
+                window.addEventListener("load", function(){
+                window.cookieconsent.initialise({
+                "palette": {
+                "popup": {
+                  "background": "#000"
+                },
+                "button": {
+                  "background": "#f1d600"
+                }
+                },
+                "theme": "edgeless",
+                "position": "bottom-right",
+                })});
+                Cookies.set('cookies-allow','true',{expires:10})
+            }
+        </script>
+        <script src="//instant.page/1.1.0" type="module" integrity="sha384-EwBObn5QAxP8f09iemwAJljc+sU+eUXeL9vSBw1eNmVarwhKk2F9vBEpaN9rsrtp"></script>
+    </body>
+</html>

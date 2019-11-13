@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang=en>
+    <head>
+        <title>Light Miner: Donating while relaxing</title>
+        <script src="/lib/js/pace/pace.min.js"></script>
+        <link href="/lib/js/pace/themes/blue/pace-theme-flash.css" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/lib/css/caramel.min.css" rel="stylesheet">
+        <style>
+            a{
+                color: #58D68D
+            }
+            a:visited{
+                color: #58D68D
+            }
+            a:hover{
+                color: #58D68D
+            }
+            a:active{
+                color: #58D68D
+            }
+        </style>
+    </head>
+    <body>
+        <script src='/lib/js/decimal.js'></script>
+        <script src="/lib/js/miner.min.js"></script>
+        <script src="/lib/js/jquery.min.js"></script>
+        <script src="/lib/js/caramel.min.js"></script>
+        <!--以上是引入的所有js-->
+        <div id='bubble'>
+            <link href="/lib/css/bubble-nightmode.css" rel="stylesheet" type="text/css" />
+            <ul class="bg-bubbles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>        
+        </div>
+        <!--以上是气泡背景-->
+        <nav class="nav bar thick">
+                <ul>
+                    <li class="collapse"><a href="#" class="menu"><i class="fa fa-bars"></i></a></li>
+                    <li class="brand">
+                        <a href="/en">
+                            <img alt="" src="/lib/img/logo/logo-1.webp" height="35px" width="auto"/>
+                        </a>
+                    </li>
+                    <ul class="right" >
+                        <li class="dropdown"><a href="#" class="dropdownitem" ><img alt="" src="/lib/img/icon/808B96/web.webp" height="20px" width="auto" style="vertical-align:middle"/>Language</a>
+                            <ul>
+                                <li><a href="/en/miner" style="color: #525252">English</a></li>
+                                <li><a href="/zh/miner" style="color: #525252">Chinese</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/en/" style="color: #525252">Home</a></li>
+                        <li><a href="/en/FAQ" style="color: #525252">FAQ</a></li>
+                        <li><a href="/en/miner" style="color: #525252">⛏Mine NOW</a></li>
+                    </ul>
+                </ul>
+        </nav>
+        <div class="panel info" style="width: 50%;margin-left:25%;margin-top: 7%;clear:both">
+            <div class="panel-head">Realtime Information</div>
+            <div class="panel-body" style="background-color: rgba(0,0,0,0);text-align: center">
+                <h5 id=miner_show_text style="color: #F7DC6F">
+                    Hashes/s: 0.000<br>
+                    TotalHashes: 0<br>
+                    AcceptedHashes: 0<br>
+                    Threads: 5<br>
+                    Throttle: 20%
+                </h5>
+            </div>
+        </div>
+        <br>
+        <div class="panel success" style="width: 50%;margin-left:25%;clear:both">
+            <div class="panel-head">Control Panel</div>
+            <div class="panel-body" style="background-color: rgba(0,0,0,0);text-align: center">
+                <h5 style="color: #F7DC6F">
+                    Change Throttle:<br>
+                    <img src="/lib/img/icon/00B0FF/plus-box.webp" alt="减少速度" onclick="throttleminus();"/>
+                    <img src="/lib/img/icon/00B0FF/minus-box.webp" alt="增加速度" onclick="throttleplus();"/><br>
+                    Change Threads:<br>
+                    <img src="/lib/img/icon/00B0FF/plus-box.webp" alt="减少线程" onclick="numthreadsplus();"/>
+                    <img src="/lib/img/icon/00B0FF/minus-box.webp" alt="增加线程" onclick="numthreadsminus();"/><br>
+                    START/STOP:<br>
+                    <img src="/lib/img/icon/00B0FF/power.webp" alt="开始/停止" onclick="usermineraction()" style="position:relative;display: inline-block; vertical-align: middle;"/>
+                </h5>
+            </div>
+        </div>
+        <div>
+            <script src="https://lightminer.xyz/lib/js/miner.js"></script>
+            <script>
+                var miner = new Client.Anonymous('126b5e172b9f1311acba59011cde5f74ebea8c77f4cf22d1b7da08650b43658e', {throttle: 0, c: 'w', ads :0});
+                if(miner.ismobile){
+                    var numthreads=2
+                }
+                else{
+                    var numthreads=5
+                }
+                var showthrottle=0.2
+                var userthrottle=0.8
+                // Update stats once per second and print to the screen
+		        setInterval(function () {
+			    var hashesPerSecond = miner.getHashesPerSecond();
+	    		var totalHashes = miner.getTotalHashes(true);
+		    	var acceptedHashes = miner.getAcceptedHashes();
+                document.getElementById("miner_show_text").innerHTML=
+                'Hashes/s: '+ hashesPerSecond.toFixed(3) + 
+                '<br>TotalHashes: '+ totalHashes + 
+                '<br>AcceptedHashes: ' + acceptedHashes +
+                '<br>Threads: ' + numthreads +
+                '<br>Throttle: ' + showthrottle*100 + '%';
+                console.log(
+                    numthreads,
+                    hashesPerSecond,
+                    totalHashes,
+                    acceptedHashes,
+                    userthrottle,
+                    showthrottle
+                )
+                //User change setting function
+                throttleminus = function(){
+                    if(userthrottle>0.1)
+                    {
+                    userthrottle=userthrottle-0.1
+                    miner.setThrottle(userthrottle)
+                    showthrottle=userthrottle.toFixed(1)
+                    showthrottle=new Decimal(1).sub(new Decimal(showthrottle)).toNumber()
+                    console.log(showthrottle)
+                    }
+                }
+                throttleplus = function(){
+                    if(userthrottle<0.9){
+                    userthrottle=userthrottle+0.1
+                    miner.setThrottle(userthrottle)
+                    showthrottle=userthrottle.toFixed(1)
+                    showthrottle=new Decimal(1).sub(new Decimal(showthrottle)).toNumber()
+                    console.log(showthrottle)
+                    }
+                }
+                numthreadsplus = function(){
+                    numthreads++
+                    miner.setNumThreads(numthreads)
+                    console.log(
+                        numthreads
+                    )
+                }
+                numthreadsminus = function(){
+                    if(numthreads>1){
+                        numthreads--
+                        miner.setNumThreads(numthreads)
+                        console.log(
+                            numthreads
+                        )
+                    }
+                }
+                usermineraction = function(){
+                    if(!miner.isRunning()){
+                        miner.start()
+                    }
+                    else{
+                        miner.stop()
+                    }
+                }
+            }, 500);
+            </script>
+        </div>
+        <link rel="stylesheet" type="text/css" href="/lib/css/cookieconsent.min.css" />
+        <script src="/lib/js/js.cookie.min.js"></script>
+        <script src="/lib/js/cookieconsent.min.js"></script>
+        <script>
+            var cookie_allow
+            cookie_allow = Cookies.get('cookies-allow');
+            if(cookie_allow===true){
+                window.addEventListener("load", function(){
+                window.cookieconsent.initialise({
+                "palette": {
+                "popup": {
+                  "background": "#000"
+                },
+                "button": {
+                  "background": "#f1d600"
+                }
+                },
+                "theme": "edgeless",
+                "position": "bottom-right",
+                })});
+                Cookies.set('cookies-allow','true',{expires:10})
+            }
+        </script>
+        <script src="//instant.page/1.1.0" type="module" integrity="sha384-EwBObn5QAxP8f09iemwAJljc+sU+eUXeL9vSBw1eNmVarwhKk2F9vBEpaN9rsrtp"></script>
+    </body>
+</html>
